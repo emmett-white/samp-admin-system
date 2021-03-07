@@ -37,7 +37,7 @@ sampctl package install emmett-white/samp-admin-system
 Include in your code and begin using the library:
 
 ```pawn
-#include <samp-admin-system>
+#include <admin-system>
 ```
 
 ## Usage
