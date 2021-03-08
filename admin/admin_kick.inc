@@ -16,13 +16,23 @@ static
 
 // functions
 /**
-  * <param name="playerid">The player who'll be kicked from the server</param>
+  * <param name="targetid">The player who'll be kicked from the server</param>
+  * <param name="adminid">The player who'll kick the player (targetid)</param>
   * <param name="reason">The reason why player will be kicked..</param>
  */
-stock KickPlayer(const playerid, const string: reason[] = "")
+stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
 {
-    strcopy(__gPlayerKickReason[playerid], reason);
-    Kick(playerid);
+    if (adminid == INVALID_PLAYER_ID) {
+        CallLocalFunction("KickPlayer", "dds", targetid, adminid, "N/A");
+        strcopy(__gPlayerKickReason[targetid], "N/A");
+
+        ++__kickedPlayers;
+
+        return 1;
+    }
+
+    strcopy(__gPlayerKickReason[targetid], reason);
+    Kick(targetid);
 
     ++__kickedPlayers;
 

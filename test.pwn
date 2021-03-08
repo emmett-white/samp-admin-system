@@ -17,6 +17,10 @@ main()
     // new playerid;
     // KickPlayer(playerid, "Test");
     // printf("reason: %s total: %d", GetPlayerKickReason(playerid), GetTotalKick());
+
+    // new playerid;
+    // KickPlayer(playerid, 4, "Test");
+    // printf("%s", GetPlayerKickReason(playerid));
 }
 
 // Test commands
@@ -40,7 +44,7 @@ ADMIN_COMMAND:[4]test(playerid, const params[])
 //         return SendClientMessage(playerid, -1, "/kick [targetid] [reason]");
 //     }
 
-//     KickPlayer(targetid, reason);
+//     KickPlayer(targetid, playerid, reason);
 
 //     new string[64];
 //     format(string, sizeof string, "Reason: %s | Total: %d", GetPlayerKickReason(targetid), GetTotalKick());
