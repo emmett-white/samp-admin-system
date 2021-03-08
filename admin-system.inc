@@ -17,3 +17,7 @@
 #if !defined _admin_cmds_included
     #include <admin_commands>
 #endif
+
+#if !defined _admin_kick_included
+    #include <admin_kick>
+#endif
