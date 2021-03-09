@@ -31,7 +31,7 @@ stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string
         return 1;
     }
 
-    strcopy(__gPlayerKickReason[targetid], reason);
+    strcopy(__gPlayerKickReason[targetid], string: reason);
     Kick(targetid);
 
     ++__kickedPlayers;
@@ -44,7 +44,7 @@ stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string
  */
 stock GetPlayerKickReason(const playerid)
 {
-    return __gPlayerKickReason[playerid];
+    return string: __gPlayerKickReason[playerid];
 }
 
 /**
