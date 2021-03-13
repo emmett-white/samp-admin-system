@@ -40,7 +40,7 @@ stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string
 }
 
 /**
-  * <summary>Returns the reason why the player has been kicked from the server.</summary>
+  * <summary>Returns the reason why the player has been kicked from the server</summary>
  */
 stock GetPlayerKickReason(const playerid)
 {
@@ -50,7 +50,7 @@ stock GetPlayerKickReason(const playerid)
 /**
   * <summary>Returns the number of kicked players</summary>
  */
-stock GetTotalKick()
+stock GetTotalKicked()
 {
     return __kickedPlayers;
 }

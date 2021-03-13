@@ -21,3 +21,11 @@
 #if !defined _admin_kick_included
     #include <admin_kick>
 #endif
+
+#if !defined _admin_ban_included
+    #include <admin_ban>
+#endif
+
+#if !defined _admin_mute_included
+    #include <admin_mute>
+#endif

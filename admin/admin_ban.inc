@@ -40,7 +40,7 @@ stock BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string:
 }
 
 /**
-  * <summary>Returns the reason why the player has been banned from the server.</summary>
+  * <summary>Returns the reason why the player has been banned from the server</summary>
  */
 stock GetPlayerBanReason(const playerid)
 {
@@ -50,7 +50,7 @@ stock GetPlayerBanReason(const playerid)
 /**
   * <summary>Returns the number of banned players</summary>
  */
-stock GetTotalBan()
+stock GetTotalBanned()
 {
     return __bannedPlayers;
 }
