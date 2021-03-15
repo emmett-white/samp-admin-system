@@ -23,7 +23,7 @@ static
   * <param name="minutes">The time how long the player will be muted</param>
   * <param name="reason">The reason why player will be muted..</param>
  */
-stock MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A")
+stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("MutePlayer", "ddds", targetid, adminid, minutes, "N/A");
@@ -35,7 +35,7 @@ stock MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minute
         return 1;
     }
 
-    if (IsPlayerMuted(targetid) && minutes) {
+    if (Admin_IsPlayerMuted(targetid) && minutes) {
         return 0;
     }
 
@@ -50,7 +50,7 @@ stock MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minute
 /**
   * <summary>Returns the reason why the player has been muted</summary>
  */
-stock GetPlayerMutedReason(const playerid)
+stock Admin_GetPlayerMutedReason(const playerid)
 {
     return string: __gPlayerMuteReason[playerid];
 }
@@ -58,7 +58,7 @@ stock GetPlayerMutedReason(const playerid)
 /**
   * <summary>Returns the number of muted players</summary>
  */
-stock GetTotalMuted()
+stock Admin_GetTotalMuted()
 {
     return __mutedPlayers;
 }
@@ -66,7 +66,7 @@ stock GetTotalMuted()
 /**
   * <summary>Returns the mute status of the player</summary>
  */
-stock IsPlayerMuted(const playerid)
+stock Admin_IsPlayerMuted(const playerid)
 {
     return bool: (__gPlayerMuted[playerid] ? (true) : (false));
 }

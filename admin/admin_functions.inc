@@ -27,7 +27,7 @@ static
 /**
   * <summary>Returns the value of the max admin level</summary>
  */
-stock GetMaxAdminLevel()
+stock Admin_GetMaxAdminLevel()
 {
     return MAX_ADMIN_LEVEL;
 }
@@ -37,7 +37,7 @@ stock GetMaxAdminLevel()
   * <param name="playerid">The player who'll became the administrator</param>
   * <param name="level">Administrator level...</param>
  */
-stock SetPlayerAdminLevel(const playerid, const level = 0, const code = 0)
+stock Admin_SetPlayerAdminLevel(const playerid, const level = 0, const code = 0)
 {
     if (!(MIN_ADMIN_LEVEL <= level <= MAX_ADMIN_LEVEL)) {
         return 0;
@@ -54,7 +54,7 @@ stock SetPlayerAdminLevel(const playerid, const level = 0, const code = 0)
   * <param name="playerid">The administrator to whom the code will be set</param>
   * <param name="level">Administrator code...</param>
  */
-stock SetPlayerAdminCode(const playerid, const code = 0)
+stock Admin_SetPlayerAdminCode(const playerid, const code = 0)
 {
     return __gPlayerAdminCode[playerid] = code;
 }
@@ -62,7 +62,7 @@ stock SetPlayerAdminCode(const playerid, const code = 0)
 /**
   * <summary>Returns the current admin level of the player</summary>
  */
-stock GetPlayerAdminLevel(const playerid)
+stock Admin_GetPlayerAdminLevel(const playerid)
 {
     return __gPlayerAdminLevel[playerid];
 }
@@ -70,7 +70,7 @@ stock GetPlayerAdminLevel(const playerid)
 /**
   * <summary>Returns the player's admin code</summary>
  */
-stock GetPlayerAdminCode(const playerid)
+stock Admin_GetPlayerAdminCode(const playerid)
 {
     return __gPlayerAdminCode[playerid];
 }

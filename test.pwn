@@ -3,39 +3,39 @@
 
 main()
 {
-    // new playerid;
-    // printf("%d", GetMaxAdminLevel());
-    // SetPlayerAdminLevel(playerid, 4);
-    // printf("%d", GetPlayerAdminLevel(playerid));
-    // SetPlayerAdminLevel(playerid);
-    // printf("%d", GetPlayerAdminLevel(playerid));
-    // SetPlayerAdminLevel(playerid, 5);
-    // printf("%d", GetPlayerAdminLevel(playerid));
-    // SetPlayerAdminLevel(playerid, -1);
-    // printf("%d", GetPlayerAdminLevel(playerid));
-    // KickPlayer(playerid, .reason = "Test");
-    // printf("reason: %s total: %d", GetPlayerKickReason(playerid), GetTotalKicked());
-    // KickPlayer(playerid, 4, "Test");
-    // printf("%s", GetPlayerKickReason(playerid));
-    // BanPlayer(playerid);
-    // printf("%s %d", GetPlayerBanReason(playerid), GetTotalBanned());
-    // MutePlayer(playerid, 4, 10);
-    // printf("Muted: %d | Reason: %s | Total muted: %d", IsPlayerMuted(playerid), GetPlayerMutedReason(playerid), GetTotalMuted());
-    // new playeridd = 5;
-    // MutePlayer(playeridd, 4, 4, "Test");
-    // printf("Muted: %d | Reason: %s | Total muted: %d", IsPlayerMuted(playeridd), GetPlayerMutedReason(playeridd), GetTotalMuted());
-    // MutePlayer(playerid, 4);
-    // printf("Muted: %d | Reason: %s | Total muted: %d", IsPlayerMuted(playerid), GetPlayerMutedReason(playerid), GetTotalMuted());
-    // SetPlayerAdminLevel(playerid, 4, 40);
-    // printf("%d", GetPlayerAdminCode(playerid));
-    // SetPlayerAdminCode(playerid, 4485409);
-    // printf("%d", GetPlayerAdminCode(playerid));
+    new playerid;
+    printf("%d", Admin_GetMaxAdminLevel());
+    Admin_SetPlayerAdminLevel(playerid, 4);
+    printf("%d", Admin_GetPlayerAdminLevel(playerid));
+    Admin_SetPlayerAdminLevel(playerid);
+    printf("%d", Admin_GetPlayerAdminLevel(playerid));
+    Admin_SetPlayerAdminLevel(playerid, 5);
+    printf("%d", Admin_GetPlayerAdminLevel(playerid));
+    Admin_SetPlayerAdminLevel(playerid, -1);
+    printf("%d", Admin_GetPlayerAdminLevel(playerid));
+    Admin_KickPlayer(playerid, .reason = "Test");
+    printf("reason: %s total: %d", Admin_GetPlayerKickReason(playerid), Admin_GetTotalKicked());
+    Admin_KickPlayer(playerid, 4, "Test");
+    printf("%s", Admin_GetPlayerKickReason(playerid));
+    Admin_BanPlayer(playerid);
+    printf("%s %d", Admin_GetPlayerBanReason(playerid), Admin_GetTotalBanned());
+    Admin_MutePlayer(playerid, 4, 10);
+    printf("Muted: %d | Reason: %s | Total muted: %d", Admin_IsPlayerMuted(playerid), Admin_GetPlayerMutedReason(playerid), Admin_GetTotalMuted());
+    new playeridd = 5;
+    Admin_MutePlayer(playeridd, 4, 4, "Test");
+    printf("Muted: %d | Reason: %s | Total muted: %d", Admin_IsPlayerMuted(playeridd), Admin_GetPlayerMutedReason(playeridd), Admin_GetTotalMuted());
+    Admin_MutePlayer(playerid, 4);
+    printf("Muted: %d | Reason: %s | Total muted: %d", Admin_IsPlayerMuted(playerid), Admin_GetPlayerMutedReason(playerid), Admin_GetTotalMuted());
+    Admin_SetPlayerAdminLevel(playerid, 4, 40);
+    printf("%d", Admin_GetPlayerAdminCode(playerid));
+    Admin_SetPlayerAdminCode(playerid, 4485409);
+    printf("%d", Admin_GetPlayerAdminCode(playerid));
 }
 
 // Test commands
 ADMIN_COMMAND:[MIN_ADMIN_LEVEL]setadmin(playerid, const params[])
 {
-    SetPlayerAdminLevel(playerid, 4);
+    Admin_SetPlayerAdminLevel(playerid, 4);
 
     return 1;
 }

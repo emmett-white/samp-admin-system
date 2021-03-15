@@ -20,7 +20,7 @@ static
   * <param name="adminid">The player who'll ban the player (targetid)</param>
   * <param name="reason">The reason why player will be banned..</param>
  */
-stock BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
+stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("BanPlayer", "dds", targetid, adminid, "N/A");
@@ -42,7 +42,7 @@ stock BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string:
 /**
   * <summary>Returns the reason why the player has been banned from the server</summary>
  */
-stock GetPlayerBanReason(const playerid)
+stock Admin_GetPlayerBanReason(const playerid)
 {
     return string: __gPlayerBanReason[playerid];
 }
@@ -50,7 +50,7 @@ stock GetPlayerBanReason(const playerid)
 /**
   * <summary>Returns the number of banned players</summary>
  */
-stock GetTotalBanned()
+stock Admin_GetTotalBanned()
 {
     return __bannedPlayers;
 }

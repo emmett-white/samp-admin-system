@@ -14,7 +14,7 @@
 
 // settings
 #define PLAYER_COMMAND:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
-#define ADMIN_COMMAND:[%0]%1(%2,%3) PLAYER_COMMAND:%1(%2,%3) if (GetPlayerAdminLevel(%2) < %0) return 0; else
+#define ADMIN_COMMAND:[%0]%1(%2,%3) PLAYER_COMMAND:%1(%2,%3) if (Admin_GetPlayerAdminLevel(%2) < %0) return 0; else
 
 // hook callback
 hook OnPlayerCommandText(playerid, cmdtext[])
@@ -35,7 +35,7 @@ hook OnPlayerCommandText(playerid, cmdtext[])
 
 	if(funcidx(cmdfunction) == -1) {
 		new
-			iLvl = GetPlayerAdminLevel(playerid),
+			iLvl = Admin_GetPlayerAdminLevel(playerid),
 			iLoop = MAX_ADMIN_LEVEL;
 
 		while(iLoop > 0) {

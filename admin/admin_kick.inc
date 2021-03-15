@@ -20,7 +20,7 @@ static
   * <param name="adminid">The player who'll kick the player (targetid)</param>
   * <param name="reason">The reason why player will be kicked..</param>
  */
-stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
+stock Admin_KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("KickPlayer", "dds", targetid, adminid, "N/A");
@@ -42,7 +42,7 @@ stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string
 /**
   * <summary>Returns the reason why the player has been kicked from the server</summary>
  */
-stock GetPlayerKickReason(const playerid)
+stock Admin_GetPlayerKickReason(const playerid)
 {
     return string: __gPlayerKickReason[playerid];
 }
@@ -50,7 +50,7 @@ stock GetPlayerKickReason(const playerid)
 /**
   * <summary>Returns the number of kicked players</summary>
  */
-stock GetTotalKicked()
+stock Admin_GetTotalKicked()
 {
     return __kickedPlayers;
 }
