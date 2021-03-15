@@ -25,7 +25,7 @@ Include in your code and begin using the library:
 | Kick system | ✅ |
 | Ban system | ✅ |
 | Mute system | ✅ |
-| Jail system | ❌ |
+| Jail system | ✅ |
 ---
 
 ### Functions

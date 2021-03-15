@@ -12,6 +12,7 @@
 // variables
 static
     __gPlayerMuteReason[MAX_PLAYERS][0x40],
+    __gPlayerMuteTime[MAX_PLAYERS],
     bool: __gPlayerMuted[MAX_PLAYERS],
     
     __mutedPlayers;
@@ -26,10 +27,11 @@ static
 stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
-        CallLocalFunction("MutePlayer", "ddds", targetid, adminid, minutes, "N/A");
-        strcopy(__gPlayerMuteReason[targetid], "N/A");
+        CallLocalFunction("Admin_MutePlayer", "ddds", targetid, adminid, minutes, string: "N/A");
+        strcopy(__gPlayerMuteReason[targetid], string: "N/A");
 
         __gPlayerMuted[targetid] = (!minutes ? (false) : (true));
+        __gPlayerMuteTime[targetid] = minutes;
         __mutedPlayers = (!minutes ? (--__mutedPlayers) : (++__mutedPlayers));
 
         return 1;
@@ -39,9 +41,10 @@ stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const 
         return 0;
     }
 
-    strcopy(__gPlayerMuteReason[targetid], reason);
+    strcopy(__gPlayerMuteReason[targetid], string: reason);
 
     __gPlayerMuted[targetid] = (!minutes ? (false) : (true));
+    __gPlayerMuteTime[targetid] = minutes;
     __mutedPlayers = (!minutes ? (--__mutedPlayers) : (++__mutedPlayers));
 
     return 1;
@@ -69,4 +72,12 @@ stock Admin_GetTotalMuted()
 stock Admin_IsPlayerMuted(const playerid)
 {
     return bool: (__gPlayerMuted[playerid] ? (true) : (false));
+}
+
+/**
+  * <summary>Returns the time how long is player muted in minutes</summary>
+ */
+stock Admin_GetPlayerMuteTime(const playerid)
+{
+    return __gPlayerMuteTime[playerid];
 }

@@ -23,8 +23,8 @@ static
 stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
-        CallLocalFunction("BanPlayer", "dds", targetid, adminid, "N/A");
-        strcopy(__gPlayerBanReason[targetid], "N/A");
+        CallLocalFunction("Admin_BanPlayer", "dds", targetid, adminid, string: "N/A");
+        strcopy(__gPlayerBanReason[targetid], string: "N/A");
 
         ++__bannedPlayers;
 

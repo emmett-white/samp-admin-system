@@ -30,6 +30,9 @@ main()
     printf("%d", Admin_GetPlayerAdminCode(playerid));
     Admin_SetPlayerAdminCode(playerid, 4485409);
     printf("%d", Admin_GetPlayerAdminCode(playerid));
+
+    Admin_JailPlayer(playerid, 4, 10, "Test");
+    printf("Jailed: %d Time: %d Reason: %s Total: %d", Admin_IsPlayerJailed(playerid), Admin_GetPlayerJailTime(playerid), Admin_GetPlayerJailReason(playerid), Admin_GetTotalJailed());
 }
 
 // Test commands

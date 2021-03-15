@@ -23,8 +23,8 @@ static
 stock Admin_KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
-        CallLocalFunction("KickPlayer", "dds", targetid, adminid, "N/A");
-        strcopy(__gPlayerKickReason[targetid], "N/A");
+        CallLocalFunction("Admin_KickPlayer", "dds", targetid, adminid, string: "N/A");
+        strcopy(__gPlayerKickReason[targetid], string: "N/A");
 
         ++__kickedPlayers;
 
