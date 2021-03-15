@@ -30,24 +30,31 @@ Include in your code and begin using the library:
 
 ### Functions
 ```c
-stock GetMaxAdminLevel()
-stock SetPlayerAdminLevel(const playerid, const level = 0, const code = 0)
-stock SetPlayerAdminCode(const playerid, const code = 0)
-stock GetPlayerAdminLevel(const playerid)
-stock GetPlayerAdminCode(const playerid)
+stock Admin_GetMaxAdminLevel()
+stock Admin_SetPlayerAdminLevel(const playerid, const level = 0, const code = 0)
+stock Admin_SetPlayerAdminCode(const playerid, const code = 0)
+stock Admin_GetPlayerAdminLevel(const playerid)
+stock Admin_GetPlayerAdminCode(const playerid)
 
-stock KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
-stock GetPlayerKickReason(const playerid)
-stock GetTotalKicked()
+stock Admin_KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
+stock Admin_GetPlayerKickReason(const playerid)
+stock Admin_GetTotalKicked()
 
-stock BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
-stock GetPlayerBanReason(const playerid)
-stock GetTotalBanned()
+stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
+stock Admin_GetPlayerBanReason(const playerid)
+stock Admin_GetTotalBanned()
 
-stock MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A")
-stock GetPlayerMutedReason(const playerid)
-stock GetTotalMuted()
-stock IsPlayerMuted(const playerid)
+stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A")
+stock Admin_GetPlayerMutedReason(const playerid)
+stock Admin_GetTotalMuted()
+stock Admin_IsPlayerMuted(const playerid)
+stock Admin_GetPlayerMuteTime(const playerid)
+
+stock Admin_JailPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A", Float: jail_pos_x = 0.0, Float: jail_pos_y = 0.0, Float: jail_pos_z = 0.0, Float: jail_pos_a = 0.0, const jail_vw = -1, const jail_int = -1)
+stock Admin_GetPlayerJailReason(const playerid)
+stock Admin_GetTotalJailed()
+stock Admin_IsPlayerJailed(const playerid)
+stock Admin_GetPlayerJailTime(const playerid)
 ```
 ---
 
@@ -65,10 +72,10 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setadmin(playerid, const params[])
         return 0;
     }
 
-    SetPlayerAdminLevel(targetid, level, code);
+    Admin_SetPlayerAdminLevel(targetid, level, code);
     va_SendClientMessage(
         targetid, -1,
-        "Admin Level: %d | Code: %d", GetPlayerAdminLevel(targetid), GetPlayerAdminCode(targetid)
+        "Admin Level: %d | Code: %d", Admin_GetPlayerAdminLevel(targetid), Admin_GetPlayerAdminCode(targetid)
     );
 
     return 1;
@@ -83,7 +90,7 @@ ADMIN_COMMAND:[1]kick(playerid, const params[])
         return SendClientMessage(playerid, -1, "/kick <targetid> <reason>");
     }
 
-    KickPlayer(targetid, playerid, reason);
+    Admin_KickPlayer(targetid, playerid, reason);
 
     return 1;
 }
@@ -97,7 +104,7 @@ ADMIN_COMMAND:[1]ban(playerid, const params[])
         return SendClientMessage(playerid, -1, "/ban <targetid> <reason>");
     }
 
-    BanPlayer(targetid, playerid, reason);
+    Admin_anPlayer(targetid, playerid, reason);
 
     return 1;
 }
@@ -112,13 +119,31 @@ ADMIN_COMMAND:[1]mute(playerid, const params[])
         return SendClientMessage(playerid, -1, "/mute <targetid> <minutes> <reason>");
     }
 
-    MutePlayer(targetid, playerid, minutes, reason);
+    Admin_MutePlayer(targetid, playerid, minutes, reason);
 
     return 1;
 }
 
-// To un-mute just set minutes to 0...
+// To un-mute player just set minutes to 0...
 __gPlayerMuted[targetid] = (!minutes ? (false) : (true)); // if minutes = 0 the player will not be muted..
+```
+
+### How to jail player(s)
+```c
+ADMIN_COMMAND:[1]jail(playerid, const params[])
+{
+    // Example with sscanf (Y_Less sscanf)
+    extract params -> new targetid, minutes, string: reason[64]; else {
+        return SendClientMessage(playerid, -1, "/jail <targetid> <minutes> <reason>");
+    }
+
+    Admin_JailPlayer(targetid, playerid, minutes, reason);
+
+    return 1;
+}
+
+// To un-jail player just set minutes to 0...
+__gPlayerJailed[targetid] = (!minutes ? (false) : (true)); // if minutes = 0 the player will not be jailed..
 ```
 ---
 
