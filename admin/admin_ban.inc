@@ -20,11 +20,13 @@ static
   * <param name="adminid">The player who'll ban the player (targetid)</param>
   * <param name="reason">The reason why player will be banned..</param>
  */
-stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const reason[] = "N/A")
+stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const reason[] = "N/A", {Float,_}:...)
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("Admin_BanPlayer", "dds", targetid, adminid, string: "N/A");
+        
         strcopy(__gPlayerBanReason[targetid], string: "N/A");
+        BanEx(targetid, string: reason);
 
         ++__bannedPlayers;
 
@@ -33,6 +35,38 @@ stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const r
 
     strcopy(__gPlayerBanReason[targetid], string: reason);
     BanEx(targetid, string: reason);
+
+    ++__bannedPlayers;
+
+    return 1;
+}
+
+/**
+  * <param name="targetid">The player who'll be banned from the server by ip</param>
+  * <param name="adminid">The player who'll ban the player ip (targetid)</param>
+  * <param name="ip_addr">Player IP Address..</param>
+  * <param name="reason">The reason why player will be banned by ip..</param>
+ */
+stock Admin_BanPlayerIP(const targetid, const adminid = INVALID_PLAYER_ID, const ip_addr[], const reason[] = "N/A", {Float,_}:...)
+{
+    new ip_fmt[32];
+
+    if (adminid == INVALID_PLAYER_ID) {
+        CallLocalFunction("Admin_BanPlayerIP", "ddss", targetid, adminid, string: ip_addr, string: "N/A");
+        strcopy(__gPlayerBanReason[targetid], string: "N/A");
+        
+        format(ip_fmt, sizeof ip_fmt, "banip %s", string: ip_addr);    
+        SendRconCommand(ip_fmt);
+
+        ++__bannedPlayers;
+
+        return 1;
+    }
+
+    strcopy(__gPlayerBanReason[targetid], string: reason);
+
+    format(ip_fmt, sizeof ip_fmt, "banip %s", string: ip_addr);    
+    SendRconCommand(string: ip_fmt);
 
     ++__bannedPlayers;
 

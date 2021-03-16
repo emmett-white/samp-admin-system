@@ -24,7 +24,7 @@ static
   * <param name="minutes">The time how long the player will be muted</param>
   * <param name="reason">The reason why player will be muted..</param>
  */
-stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const reason[] = "N/A")
+stock Admin_MutePlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const reason[] = "N/A", {Float,_}:...)
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("Admin_MutePlayer", "ddds", targetid, adminid, minutes, string: "N/A");

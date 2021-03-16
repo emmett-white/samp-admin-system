@@ -20,7 +20,7 @@ static
   * <param name="adminid">The player who'll kick the player (targetid)</param>
   * <param name="reason">The reason why player will be kicked..</param>
  */
-stock Admin_KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const reason[] = "N/A")
+stock Admin_KickPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const reason[] = "N/A", {Float,_}:...)
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("Admin_KickPlayer", "dds", targetid, adminid, string: "N/A");
