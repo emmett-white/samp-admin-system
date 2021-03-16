@@ -61,8 +61,12 @@ stock Admin_GetPlayerJailTime(const playerid)
 ## Usage (+commands example)
 ### How to set admin to the player?
 ```c
-ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setadmin(playerid, const params[])
+CMD:setadmin(playerid, const params[])
 {
+    if (Admin_GetPlayerAdminLevel(playerid) < MAX_ADMIN_LEVEL) {
+        return 0;
+    }
+
     // Example with sscanf (Y_Less sscanf)
     extract params -> new targetid, level, code; else {
         return SendClientMessage(playerid, -1, "/setadmin <targetid> <level> <code>");
@@ -83,8 +87,12 @@ ADMIN_COMMAND:[MAX_ADMIN_LEVEL]setadmin(playerid, const params[])
 ```
 ### How to kick player(s)
 ```c
-ADMIN_COMMAND:[1]kick(playerid, const params[])
+CMD:kick(playerid, const params[])
 {
+    if (Admin_GetPlayerAdminLevel(playerid) < 1) {
+        return 0;
+    }
+
     // Example with sscanf (Y_Less sscanf)
     extract params -> new targetid, string: reason[64]; else {
         return SendClientMessage(playerid, -1, "/kick <targetid> <reason>");
@@ -97,8 +105,12 @@ ADMIN_COMMAND:[1]kick(playerid, const params[])
 ```
 ### How to ban player(s)
 ```c
-ADMIN_COMMAND:[1]ban(playerid, const params[])
+CMD:ban(playerid, const params[])
 {
+    if (Admin_GetPlayerAdminLevel(playerid) < 1) {
+        return 0;
+    }
+
     // Example with sscanf (Y_Less sscanf)
     extract params -> new targetid, string: reason[64]; else {
         return SendClientMessage(playerid, -1, "/ban <targetid> <reason>");
@@ -112,8 +124,12 @@ ADMIN_COMMAND:[1]ban(playerid, const params[])
 
 ### How to mute player(s)
 ```c
-ADMIN_COMMAND:[1]mute(playerid, const params[])
+CMD:mute(playerid, const params[])
 {
+    if (Admin_GetPlayerAdminLevel(playerid) < 1) {
+        return 0;
+    }
+
     // Example with sscanf (Y_Less sscanf)
     extract params -> new targetid, minutes, string: reason[64]; else {
         return SendClientMessage(playerid, -1, "/mute <targetid> <minutes> <reason>");
@@ -130,8 +146,12 @@ __gPlayerMuted[targetid] = (!minutes ? (false) : (true)); // if minutes = 0 the 
 
 ### How to jail player(s)
 ```c
-ADMIN_COMMAND:[1]jail(playerid, const params[])
+CMD:jail(playerid, const params[])
 {
+    if (Admin_GetPlayerAdminLevel(playerid) < 1) {
+        return 0;
+    }
+
     // Example with sscanf (Y_Less sscanf)
     extract params -> new targetid, minutes, string: reason[64]; else {
         return SendClientMessage(playerid, -1, "/jail <targetid> <minutes> <reason>");

@@ -1,3 +1,4 @@
+// credits: Mergevos
 // built-in include guard removal
 // just in case the user has a local dependency with the same file name
 #if defined _inc_admin_system
@@ -14,10 +15,6 @@
     #include <admin_functions>
 #endif
 
-#if !defined _admin_cmds_included
-    #include <admin_commands>
-#endif
-
 #if !defined _admin_kick_included
     #include <admin_kick>
 #endif
@@ -28,4 +25,8 @@
 
 #if !defined _admin_mute_included
     #include <admin_mute>
+#endif
+
+#if !defined _admin_jail_included
+    #include <admin_jail>
 #endif
