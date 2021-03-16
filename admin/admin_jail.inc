@@ -30,7 +30,7 @@ static
   * <param name="jail_vw">Player virtual world id</param>
   * <param name="jail_int">Player interior id</param>
  */
-stock Admin_JailPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const string: reason[] = "N/A", Float: jail_pos_x = 0.0, Float: jail_pos_y = 0.0, Float: jail_pos_z = 0.0, Float: jail_pos_a = 0.0, const jail_vw = -1, const jail_int = -1)
+stock Admin_JailPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const minutes = 0, const reason[] = "N/A", Float: jail_pos_x = 0.0, Float: jail_pos_y = 0.0, Float: jail_pos_z = 0.0, Float: jail_pos_a = 0.0, const jail_vw = -1, const jail_int = -1)
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction(

@@ -20,7 +20,7 @@ static
   * <param name="adminid">The player who'll ban the player (targetid)</param>
   * <param name="reason">The reason why player will be banned..</param>
  */
-stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const string: reason[] = "N/A")
+stock Admin_BanPlayer(const targetid, const adminid = INVALID_PLAYER_ID, const reason[] = "N/A")
 {
     if (adminid == INVALID_PLAYER_ID) {
         CallLocalFunction("Admin_BanPlayer", "dds", targetid, adminid, string: "N/A");
